@@ -1,0 +1,59 @@
+Perfect hashing: table must contain atleast the same number of positions as the number
+of entries being hashed.
+
+Collision: 2 entries have the same hash value. Like abc and acb.
+
+Hashing functions:
+==================
+
+1. Division: h(K) = K mod Tsize where Tsize = sizeof(table)
+
+2. Folding: key is divided into several parts and these parts are combined using a single
+	    operation like adition.
+
+   shift folding and boundary folding
+
+   shift folding: 123-456-789 = (123+456+789) mod Tsize
+   boundary folding: like its written on a paper and folded. Ex: 123-456-789 = 123 + 654 + 789 mod size
+
+3. Mid-square function: key is squared and middle part of the result is used as address.
+
+4. Extraction: only a part of the key is used to compute the address. 
+
+5. Radix transformation: key is transformed into another number base.
+
+Collision resolution:
+====================
+
+1. Open addressing
+------------------
+When a key collides with another key, collision is resolved by finding another position for the new 
+key using a probing function.
+
+So for key K, position = h(K) + p(i).
+
+In linear probing, p(i) = 1. So eg, if position 2 is occupied, new key is placed at positon 3.
+
+Problem with linear probing: clustering of keys in the table which undermines the performance for
+storing and retrieving data.
+
+quadratic probing: h(K) + i^2, h(K) - i^2, for i = 1,2... (Tsize -1)/2
+
+2. Chaining
+-----------
+Keys are not stored in the table itself.
+Each position of the table is associated with a linked list whose info field contain the keys.
+
+Called seperate chaining, table is called scatter table.
+
+Good for short linked lists. Otherwise, search performance is bad. Sorted insert can help.
+
+One solution: coalesced hashing - combination of open addressing and chaining.
+
+If key K collides with another key, the first available position for K using linear hashing is found.
+This position is stored at K's actual potision. This way there is no linear searching.
+
+3. Bucket addressing
+--------------------
+bucket is a block of space large enough to store multiple items. So colliding items can be stored
+at the same position. If bucket overflows, use open addressing.

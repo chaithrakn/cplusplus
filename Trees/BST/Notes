@@ -1,0 +1,36 @@
+Deletion a node in a BST
+------------------------
+There are 3 cases:
+
+1. The node has no children
+Set appropriate pointer in the parent to NULL.
+
+2. The node has only one child
+The parent's pointer to that node is reset to point to the node's child.
+
+3. The node has 2 children
+Deletion by merging or deletion ny copying.
+
+Deletion by merging:
+====================
+Makes one tree out of the two subtrees of the node and then attaches it to the node's parent.
+
+1. Find the greatest key in the left subtree and make it the parent of the right subtree. 
+Replace node with node's left child if node is not root.
+OR
+2. Find the smallest element in the right subtree and make it the parent of the left subtree. 
+Replace node with node's right child if node is not root.
+
+1 is preferred. Why??? 
+
+Deletion by copying:
+====================
+
+Balancing a tree:
+=================
+1. Using an array:
+------------------
+
+2. Using rotations:
+-------------------
+

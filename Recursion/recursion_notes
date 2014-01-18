@@ -1,0 +1,39 @@
+What is stored on activation record?
+1. values of all parameters. (copy or address of pointer)
+2. local variables
+3. return address - address of the caller's instruction immediately following the call
+4. dynamic link - pointer to caller's activation record. Why is this needed?
+5. return value if non-void function
+
+Some small recursive functions:
+
+unsigned int factorial (unsigned int n) {
+	if (n == 0) return 1;
+	else return (n * factorial(n-1));
+}
+
+x^n:
+double power(double x, unsigned int n) {
+	if (n == 0) return 1;
+	else return (x * power(x, n-1));
+}
+
+tail recursion: use of only one recursive call at the very end of a function implementation.
+		no advantage over iteration.
+
+nontail recursion: better clarity than its iterative counterparts.
+see reveseString example.
+
+excessive recursion
+nested
+indirect
+
+fibonacci:
+
+int fib(int n) {
+	if (n < 2) 
+		return n;
+	else 
+		return fib(n-2) + fib(n-1);
+
+}

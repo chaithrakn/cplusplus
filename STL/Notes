@@ -1,0 +1,5 @@
+list<T> lst; - if T is a user-defined type, the type (class) must include a default constructor, which is required for initialization of new nodes.
+
+<list> - generic doubly linked list with pointers to head and tail.
+
+<deque> -  

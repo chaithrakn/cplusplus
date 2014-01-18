@@ -1,0 +1,29 @@
+1. The value of each node is greater than or equal to the values stored in each of its children.
+2. The tree is perfectly balanced and leaves in the last level are all in the leftmost positions.
+
+Above is called max-heap.
+min-heap less than its children.
+
+Number of levels = O(lg n)
+
+A heap can be defined as an array heap of length n in which:
+heap[i] >= heap[2i+1] for 0 <= i <= (n-1)/2
+heap[i] >= heap[2i+2]  for 0 <= i <= (n-1)/2
+
+Heaps as priority queues:
+-------------------------
+enqueue: Insert element as the last leaf node. Move up toward the root if it is greater than parent.
+
+heapEnqueue(el)
+	put el at the end of the heap;
+	while el != root && el >= parent
+		swap el and parent of el;
+
+dequeue: The root element should be removed. Put the last leaf at root and move it downwards if needed.
+
+heapDequeue(el)
+	extract the element from the root;
+	remove the element from the last leaf and put it at root's position;
+	while el != leaf && el < any of its children
+		swap el and its child
+	

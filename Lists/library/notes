@@ -1,0 +1,16 @@
+Lets learn some C++ concepts
+
+4 classes: Author, Book, Patron, CheckedOutBook
+
+an array indexed by alphabet - each element in array points to a lined list of all authors by that letter.
+Each pointer in this array points to another linked list of all books by that author.
+
+Similar array for Patron
+
+Functions:
+adding a book to library
+checking out a book
+returning a book
+showing current status of library
+
+2 arrays: catalog and people

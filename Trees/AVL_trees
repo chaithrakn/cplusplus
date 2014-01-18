@@ -1,0 +1,21 @@
+1. One in which height of the left and right subtrees at every node differ by at most one.
+
+2. Balance factor: difference beetween height of right subtree and left subtree. Can be -1, 0 or +1 for an AVL tree.
+
+3. Even worst case requires O(lg n).
+
+4. Height of avl tree = lg(n). height of a perfectly balanced tree = lg(n + 1). ==> search time in avl tree in the worst case is 44% worse than the perfectly balanced tree.
+
+5. If balance factor in any node becomes < -1 or > +1, tree needs to be balanced. 
+4 cases in which the tree can become unbalanced.
+
+6. Case 1: Inserting a node in the right subtree of the right child. (symmetrical case: inserting a node in the left subtree of the left child)
+To rectify: rotate the parent of the node that was inserted.
+
+7. Case 2: Inserting a node in the left subtree of the right child. In this case, double rotation is needed.
+
+8. How to find a node P for which the balance factor becomes unacceptable after a node has been inserted into the tree? 
+This node can be found by moving up toward the root from the position in which the new node was inserted and updating the balance factor of each node encountered. If the balance factor becomes +2 for any node, the subtree with that node as the root P needs to be balanced.
+
+9. Rebalancing after deletion: rebalancing does not stop after the first node P is found for which balance factor becomes +/-2. 
+This means that deletion can lead to O(lg n) rotations in the worst case.

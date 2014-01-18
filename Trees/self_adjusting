@@ -1,0 +1,33 @@
+1. Strategy is to restructure trees by moving up the tree only those elements that are used more often.
+
+2. Single-rotation: Rotate a child about its parent if an element in a child is accessed.
+
+3. Moving to the root: Repeat the child-parent rotation until the element being accessed is in the root.
+
+Splaying:
+=========
+Splaying is a type of self-adjusting tree strategy. 
+It is modified move-to-root.
+
+Instead of moving to root, the node that is accessed is rotated twice so that it moves closer to the root.
+
+Node R
+Parent Q
+Grandparent P
+
+1. Node R's parent is the root
+2. Nodes are in a homogeneous configuration (both R and Q are left children or right children)
+3. Nodes are in a heterogenous configuration - R is a right child and Q is a left child or symmetrical.
+
+splaying(P,Q,R) {
+  while (R is not root) {
+	if (R's parent is the root)
+	   perform single rotation
+	else if (R and its Q parent are homegeneous)
+	   rotate Q about its parent P
+	   rotate R about its parent Q
+	else (R and its parent Q are heterogeneous) 
+	   rotate R about Q 
+	   rotate R about P
+   } 
+}

@@ -1,0 +1,66 @@
+When a page is referenced and it does not exist in the cache, it should be "put" in the cache.
+When a process references a page, a page "get" happens, the contents of the page should be returned.
+
+The cache has a fixed size and can hold a maximum of max_size pages.
+
+LRU: If the cache is full and a page that does not exist in the cache referenced, the least recently 
+used page is removed from the cache and the new page is "put" in the cache.
+
+Data structures:
+================
+
+Wsh_function(pagenumber)e could just have a "queue" implemented using doubly linked list. 
+Elements are inserted at the head and removed from tail.
+
+queue_tail = least recently used
+
+When a page is accessed, it is removed from its current position and inserted at the tail or queue 
+pointers are manipulated.
+
+Problem with queue: searching is slow.
+
+So, use another data structure for fast searching, which is hash.
+
+Hash table with chaining. 
+
+There is only one copy of the page, pointed to by both hash and queue.
+
+Pseudo code:
+============
+
+// queue_tail = least recently used.
+
+// or cache reference
+page get_cache(pagenumber) {
+	convert pagenumber to key. key = hash_function(pagenumber)
+	
+	if (list at hash_table[key] is not empty) {
+		traverse through the list and search for page;
+		if (page found) {
+			move page from its current position to queue_head
+			return page
+		} else (if page not found) {
+			page = put_cache(pagenumber)
+			return page
+		}
+	}
+}
+
+page put_cache(pagenumber) {
+	key = hash_function(pagenumber)
+	page = malloc();
+	if (queue is empty) {
+		queue_tail = queue_head = tail
+	} else {
+		if (cache is full) {
+			remove the page at queue_tail
+			insert new page at queue_head
+		} else {
+			queue_head = page
+		}
+	}
+	update hash_table[key]
+	return page 
+}
+
+ 

@@ -1,0 +1,29 @@
+How forward-declarations can significantly reduce build times
+
+You can get the declaration of a function into your current .cpp or .h file by includ'ing the header that already contains a declaration of the function. However, this can slow down your compile, especially if you #include a header into a .h instead of .cpp of your program, as everything that #includes the .h you're writing would end up #include'ing all the headers you wrote #includes for too. Suddenly the compiler has #included pages and pages of code that it needs to compile even when you only wanted to use one or two functions. To avoid this, you can use a forward-declaration and just type the declaration of the function yourself at the top of the file. If you're only using a few functions, this can really make your compiles quicker compared to always #including the header. For really large project the difference could be an hour or more of compile time bought down to a few minutes
+
+#include <cstring> 
+for C-style string manipulation functions. strlen(), strcmp() etc are C-style string functions.
+
+template <class InputIterator, class T>
+InputIterator find (InputIterator first, InputIterator last, const T& val);
+Find value in range
+Returns an iterator to the first element in the range [first,last) that compares equal to val. If no such element is found, the function returns last.
+
+WTH is typename?
+http://publib.boulder.ibm.com/infocenter/comphelp/v8v101/index.jsp?topic=%2Fcom.ibm.xlcpp8a.doc%2Flanguage%2Fref%2Fkeyword_typename.htm
+All docs on this are confusing.
+
+Default constructor:
+1. either it has no parameters
+2. OR if it has parameters, all parameters have default values.
+
+Include guards:
+--------------
+
+#ifndef BST
+#define BST
+....
+#endif
+
+To prevent double inclusions. ifndef goes to endif if BST is already defined, else goes to #define.
